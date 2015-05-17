@@ -23,7 +23,6 @@ local THIS = sys.COLORS.blue .. 'THIS' .. Cn
 
 local function prep_lua_camera(opt, source)
    assert(require('camera'))
-   local vid = assert(require('libvideo_decoder'))
 
    local cam = image.Camera {
       idx      = opt.cam,
@@ -35,9 +34,6 @@ local function prep_lua_camera(opt, source)
    frame.forward = function(img)
       return cam:forward(img)
    end
-
-   -- load postfile routine from libvideo_decoder library:
-   cam.postfile = vid.postfile
 
    source.cam = cam
 end
@@ -63,46 +59,16 @@ local function prep_libcamera_tensor(opt, source)
 end
 
 
-local function prep_libvideo_decoder_camera(opt, source)
-   local cam = assert(require('libvideo_decoder'))
-   cam.loglevel(opt.loglevel)
+local function prep_lua_linuxcamera(opt, source)
+   local cam = assert(require('linuxcamera'))
 
-   local status = false
-   if opt.wthumbs ~= 2 then
-      -- buffers default == 1
-      status = cam.capture('/dev/video'..opt.cam, source.w, source.h, source.fps)
-      if not status then
-         error('cam.capture failed')
-      end
-   else
-      -- if we want to stream detections to server:
-      status = cam.capture('/dev/video'..opt.cam, source.w, source.h, source.fps, 16, 'auto', 25)
-      if not status then
-         error('cam.capture failed')
-      end
-
-      -- remux video if we want to save video segments
-      local strstr = '|url=' .. userdata.serverUrl .. '/api/upload' .. '||'
-      strstr = strstr .. 'username=' .. userdata.login
-      strstr = strstr .. '|password=' .. userdata.pw
-      print('uploading video to: ', strstr)
-
-      status = cam.startremux(strstr, 'mp4')
-      if status == 0 then
-         error('cam.startremux failed')
-      end
-   end
-
-   -- video library only handles byte tensors
-   local img_tmp = torch.FloatTensor(3, source.h, source.w)
+   -- buffers default == 1
+   cam.capture('/dev/video'..opt.cam, source.w, source.h, source.fps)
 
    -- set frame forward function
    frame.forward = function(img)
-      if not cam.frame_rgb(img_tmp) then
-         return false
-      end
-      img = img_tmp:clone()
-
+      img = torch.FloatTensor(3, source.h, source.w)
+      cam.frame_rgb(img)
       return img
    end
 
@@ -117,7 +83,7 @@ function frame:init(opt, source)
       
    elseif (opt.input == 'usbcam') then
 
-      prep_libvideo_decoder_camera(opt, source)
+      prep_lua_linuxcamera(opt, source)
 
    else
       error("<ERROR frame> Unsupported platform and frame source combination")
