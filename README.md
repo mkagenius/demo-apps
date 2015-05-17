@@ -2,7 +2,7 @@
 
 This is Teradeep may 2015 top neural network for large-scale object recognition. It has been trained to recognize most typical home indoor/outdoor objects in our daily life. It can serve as good pair of eyes for robotits, drones and other autonomous machines.
 
-![icon](icon.jpg)
+![icon](icon.jpg =300x)
 
 See it in action in this [video #1](https://www.youtube.com/watch?v=_wXHR-lad-Q), and also this other [video #2](https://www.youtube.com/watch?v=B0TreumQO-0).
 
