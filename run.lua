@@ -84,12 +84,6 @@ end
 -- load categories from file folder or this (run.lua) folder
 network.classes, network.targets = readCatCSV('categories.txt')
 
-pf(Cg..'Network has this list of categories, targets:'..Cn)
-for i=1,#network.classes do
-   if opt.allcat then network.targets[i] = true end
-   pf(Cb..i..'\t'..Cn..network.classes[i]..Cr..'\t'..tostring(network.targets[i])..Cn)
-end
-
 -- switch input sources
 source.res = {
    HVGA  = {w =  320, h =  240},
