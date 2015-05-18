@@ -9,7 +9,7 @@ See it in action in this [video #1](https://www.youtube.com/watch?v=_wXHR-lad-Q)
 
 This application is for tinkerers, hobbiest, researchers, evaluation purpose, non-commercial use only.
 
-It has been tested on OS X 10.10.3
+It has been tested on OS X 10.10.3 and Linux.
 
 
 ## install:
@@ -17,6 +17,7 @@ Install Torch7: http://torch.ch/
 
 Please download files: `model.net`, `categories.txt` and `stat.t7` from https://www.dropbox.com/sh/qw2o1nwin5f1r1n/AADYWtqc18G035ZhuOwr4u5Ea?dl=0
 
+Linux camera install: `cd lib/` then `make; make install`. Note that `Makefile` wants Torch7 installed in `/usr/local/bin`, otherwise please change accordingly!
 
 
 ## run:
