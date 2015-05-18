@@ -9,7 +9,7 @@ See it in action in this [video #1](https://www.youtube.com/watch?v=_wXHR-lad-Q)
 
 This application is for tinkerers, hobbiest, researchers, evaluation purpose, non-commercial use only.
 
-It has been tested on OS X 10.10.3 and Linux.
+It has been tested on OS X 10.10.3 and Linux. It can run at > 17 fps on a MacBook Pro (Retina, 15-inch, Late 2013) on CPU only.
 
 
 ## install:
