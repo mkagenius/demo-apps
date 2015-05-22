@@ -34,4 +34,5 @@ Feel free to modify and use for all you non-commercial projects. Interested part
 
 Have fun! Life is short, we need to produce while we can!
 
-E.
+## credits:
+Aysegul Dundar, jonghoon Jin, Alfredo Canziani, Eugenio Culurciello, Berin Martini all contributed to this work and demonstration. Thank you all!
