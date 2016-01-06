@@ -17,9 +17,10 @@ It has been tested on ODROID XU4 and Tegra TX1 boards. It can run at > 1 fps on 
 ## install:
 Install our embedded library thnets: https://github.com/mvitez/thnets
 
-On ARM:
+### On ARM:
 
 	git clone https://github.com/mvitez/thnets.git
+	cd thnets
 	export LD_LIBRARY_PATH=/usr/local/lib
 	cd OpenBLAS-stripped
 	make
@@ -28,17 +29,19 @@ On ARM:
 	make
 	sudo make install
 
-On PC:
+### On PC:
 
-Install OpenBLAS:
+Install OpenBLAS first:
 
 	git clone https://github.com/xianyi/OpenBLAS.git
+	cd OpenBLAS
 	make NO_AFFINITY=1 USE_OPENMP=1
 	make install
 
-It will be installed in /opt/OpenBLAS/lib. Install thnets:
+OpenBLAS will be installed in /opt/OpenBLAS/lib. Install thnets:
 
 	git clone https://github.com/mvitez/thnets.git
+	cd thnets
 	export LD_LIBRARY_PATH=/usr/local/lib:/opt/OpenBLAS/lib
 	make OPENBLASPATH=/opt/OpenBLAS/lib
 	sudo make install
