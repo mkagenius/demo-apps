@@ -19,6 +19,7 @@ Install our embedded library thnets: https://github.com/mvitez/thnets
 
 On ARM:
 
+	git clone https://github.com/mvitez/thnets.git
 	export LD_LIBRARY_PATH=/usr/local/lib
 	cd OpenBLAS-stripped
 	make
@@ -37,11 +38,16 @@ Install OpenBLAS:
 
 It will be installed in /opt/OpenBLAS/lib. Install thnets:
 
+	git clone https://github.com/mvitez/thnets.git
 	export LD_LIBRARY_PATH=/usr/local/lib:/opt/OpenBLAS/lib
 	make OPENBLASPATH=/opt/OpenBLAS/lib
 	sudo make install
 
 Please download files: `model.net`, `categories.txt` and `stat.t7` from https://www.dropbox.com/sh/qw2o1nwin5f1r1n/AADYWtqc18G035ZhuOwr4u5Ea?dl=0
+
+## compile:
+
+	make
 
 ## run:
 
