@@ -329,7 +329,7 @@ static int CreateShaders(int fmt)
 		"    vec4 c = texture2D(sTexture, vTextureCoord);\n"
 		"    c = c + vec4(-0.0625, -0.5, -0.0625, -0.5);\n"
 		"    int x = vTextureCoord.x * texturewidth;\n"
-		"    if(0)\n"
+		"    if(x & 1)\n"
 		"        gl_FragColor = vec4(1.164 * c.b + 1.326*c.a, 1.164 * c.b - 0.459*c.g - 0.674*c.a, 1.164 * c.b + 2.364*c.g, 1.0);\n" 
 		"    else gl_FragColor = vec4(1.164 * c.r + 1.326*c.a, 1.164 * c.r - 0.459*c.g - 0.674*c.a, 1.164 * c.r + 2.364*c.g, 1.0);\n"
 		"}\n";
