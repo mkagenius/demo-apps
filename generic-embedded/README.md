@@ -17,17 +17,35 @@ It has been tested on ODROID XU4 and Tegra TX1 boards. It can run at > 1 fps on 
 ## install:
 Install our embedded library thnets: https://github.com/mvitez/thnets
 
+On ARM:
+
+	export LD_LIBRARY_PATH=/usr/local/lib
+	cd OpenBLAS-stripped
+	make
+	sudo make install
+	cd ..
+	make
+	sudo make install
+
+On PC:
+
+Install OpenBLAS:
+
+	git clone https://github.com/xianyi/OpenBLAS.git
+	make NO_AFFINITY=1 USE_OPENMP=1
+	make install
+
+It will be installed in /opt/OpenBLAS/lib. Install thnets:
+
+	export LD_LIBRARY_PATH=/usr/local/lib:/opt/OpenBLAS/lib
+	make OPENBLASPATH=/opt/OpenBLAS/lib
+	sudo make install
+
 Please download files: `model.net`, `categories.txt` and `stat.t7` from https://www.dropbox.com/sh/qw2o1nwin5f1r1n/AADYWtqc18G035ZhuOwr4u5Ea?dl=0
 
-Place them all in one folder.
-
-
-## compile:
-```make```
-
 ## run:
-Run:
-```./thnetsdemo```
+
+	./thnetsdemo -m <path do directory with model.net>
 
 ## usage:
 
