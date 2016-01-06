@@ -52,6 +52,10 @@ Please download files: `model.net`, `categories.txt` and `stat.t7` from https://
 
 	make
 
+or on PC:
+
+	make OPENBLASPATH=/opt/OpenBLAS/lib
+
 ## run:
 
 	./thnetsdemo -m <path do directory with model.net>
