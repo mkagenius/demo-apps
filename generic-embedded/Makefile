@@ -1,6 +1,9 @@
 UNAME_P := $(shell uname -p)
+
+OPENBLASPATH=/usr/local/lib
+
 CFLAGS = -O3 -Wall -c -fopenmp -fPIC -I../thnets -I/usr/include/freetype2
-LIBS = -L/opt/OpenBLAS/lib -lopenblas -lm -lpthread -lX11 -lfreetype -lswscale
+LIBS = -L$(OPENBLASPATH) -lopenblas -lm -lpthread -lX11 -lfreetype -lswscale
 CC = gcc
 
 ifneq ($(filter aarc% arm%,$(UNAME_P)),)
@@ -17,7 +20,7 @@ all : thnetsdemo
 	$(CC) $(CFLAGS) $<
 
 thnetsdemo: $(LIBOBJS) thnetsdemo.o libgl.o videocap.o
-	$(CC) -o $@ thnetsdemo.o libgl.o videocap.o ../thnets/thnets.so $(LIBS)
+	$(CC) -o $@ thnetsdemo.o libgl.o videocap.o $(LIBS) -L/usr/local/lib -lthnets
 
 .PHONY : clean
 clean :
