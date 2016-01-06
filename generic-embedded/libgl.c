@@ -38,6 +38,7 @@ static GLuint program[3];
 static GLint positionLoc[3];
 static GLint texCoordLoc[3];
 static GLint samplerLoc[3];
+static GLint texturewidthLoc;
 static int winw, winh;
 
 enum {FMT_RGBA, FMT_YUYV, FMT_NV12};
@@ -322,11 +323,15 @@ static int CreateShaders(int fmt)
 		"precision mediump float;\n"
 		"varying vec2 vTextureCoord;\n"
 		"uniform sampler2D sTexture;\n"
+		"uniform int texturewidth;\n"
 		"void main()\n"
 		"{\n"
 		"    vec4 c = texture2D(sTexture, vTextureCoord);\n"
 		"    c = c + vec4(-0.0625, -0.5, -0.0625, -0.5);\n"
-		"    gl_FragColor = vec4(1.164 * c.r + 1.326*c.a, 1.164 * c.r - 0.459*c.g - 0.674*c.a, 1.164 * c.r + 2.364*c.g, 1.0);\n"
+		"    int x = vTextureCoord.x * texturewidth;\n"
+		"    if(0)\n"
+		"        gl_FragColor = vec4(1.164 * c.b + 1.326*c.a, 1.164 * c.b - 0.459*c.g - 0.674*c.a, 1.164 * c.b + 2.364*c.g, 1.0);\n" 
+		"    else gl_FragColor = vec4(1.164 * c.r + 1.326*c.a, 1.164 * c.r - 0.459*c.g - 0.674*c.a, 1.164 * c.r + 2.364*c.g, 1.0);\n"
 		"}\n";
 	const char *FragmentShaderGLSL1_NV12 =
 		"precision mediump float;\n"
@@ -359,7 +364,8 @@ static int CreateShaders(int fmt)
 		samplerLoc[0] = glGetUniformLocation(program[fmt], "sTextureY");
 		samplerLoc[1] = glGetUniformLocation(program[fmt], "sTextureU");
 		samplerLoc[2] = glGetUniformLocation(program[fmt], "sTextureV");
-	}
+	} else if(fmt == FMT_YUYV)
+		texturewidthLoc = glGetUniformLocation(program[fmt], "texturewidth");
 	glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
 	checkGlError("glClearColor");
 	return 0;
@@ -446,9 +452,10 @@ int Draw(int fmt, int dx, int dy, int dw, int dh)
 		glUniform1i(samplerLoc[0], 0);
 		glUniform1i(samplerLoc[1], 1);
 		glUniform1i(samplerLoc[2], 2);
-		if(checkGlError("glUniform1i"))
-			return -1;
-	}
+	} else if(fmt == FMT_YUYV)
+		glUniform1i(texturewidthLoc, winw);
+	if(checkGlError("glUniform1i"))
+		return -1;
 	memcpy(vVertices, def_vVertices, sizeof(vVertices));
 	vVertices[0] = vVertices[5] = dx * 2.0 / winw - 1.0;
 	vVertices[6] = vVertices[11] = 1.0 - dy * 2.0 / winh;

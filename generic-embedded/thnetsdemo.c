@@ -303,7 +303,7 @@ int main(int argc, char **argv)
 	{
 		fprintf(stderr, "Syntax: thnetsdemo -m <models directory> [-i <input file (default cam0)>]\n");
 		fprintf(stderr, "                   [-a <alg=0:norm,1:MM,default,2:cuDNN,3:cudNNhalf>]\n");
-		fprintf(stderr, "                   [-r <QVGA,VGA (default),HD,FHD>\n");
+		fprintf(stderr, "                   [-r <QVGA,VGA (default),HD,FHD] [-f(ullscreen)]\n");
 		return -1;
 	}
 	if(alg == 3)
