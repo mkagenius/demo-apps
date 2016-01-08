@@ -15,9 +15,9 @@ It has been tested on ODROID XU4 and Tegra TX1 boards. It can run at > 1 fps on 
 
 
 ## install:
-Requirements: libfreetype6-dev and libswscale-dev.
+Requirements: libfreetype6-dev, OpenCV.
 
-Install our embedded library thnets: https://github.com/mvitez/thnets.
+Install our embedded library thnets: https://github.com/mvitez/thnets
 
 ### On ARM:
 
@@ -60,7 +60,7 @@ or on PC:
 
 ## run:
 
-	./thnetsdemo -m <path do directory with model.net>
+	./thnetsopencvdemo -m <path do directory with model.net>
 
 ## usage:
 
