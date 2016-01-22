@@ -19,8 +19,8 @@ all : thnetsdemo
 .c.o:
 	$(CC) $(CFLAGS) $<
 
-thnetsdemo: $(LIBOBJS) thnetsdemo.o libgl.o videocap.o
-	$(CC) -o $@ thnetsdemo.o libgl.o videocap.o $(LIBS) -L/usr/local/lib -lthnets
+thnetsdemo: $(LIBOBJS) thnetsdemo.o libgl.o videocap.o 8cc.o
+	$(CC) -o $@ thnetsdemo.o libgl.o videocap.o 8cc.o $(LIBS) -L/usr/local/lib -lthnets
 
 .PHONY : clean
 clean :
