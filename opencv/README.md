@@ -1,6 +1,6 @@
 # demonstration application - Embedded
 
-This is our May 2015 top neural network for large-scale object recognition. It has been trained to recognize most typical home indoor/outdoor objects in our daily life. It was trained with more that 10 M images on a private dataset. It can serve as good pair of eyes for your machines, robots, drones and all your wonderful creations!
+This is our January 2016 top neural network for large-scale object recognition. It has been trained to recognize most typical home indoor/outdoor objects in our daily life. It was trained with more that 32 M images on a private dataset. It can serve as good pair of eyes for your machines, robots, drones and all your wonderful creations!
 
 <!--[![icon](icon.jpg|width=400px)]-->
 <a href="icon"><img src="icon.jpg" align="center" height="400" width="400" ></a>
@@ -48,7 +48,11 @@ OpenBLAS will be installed in /opt/OpenBLAS/lib. Install thnets:
 	make OPENBLASPATH=/opt/OpenBLAS/lib
 	sudo make install
 
-Please download files: `model.net`, `categories.txt` and `stat.t7` from https://www.dropbox.com/sh/qw2o1nwin5f1r1n/AADYWtqc18G035ZhuOwr4u5Ea?dl=0
+Please download files: `model.net`, `categories.txt` and `stat.t7` from: https://www.dropbox.com/sh/u3bunkfm0dzjix6/AABQ4Nq4-70MU57MxXyyjrrMa?dl=0
+This is our new 5000 categories network from January 2016.
+
+Also this is our older 1000 categories model:
+https://www.dropbox.com/sh/qw2o1nwin5f1r1n/AADYWtqc18G035ZhuOwr4u5Ea?dl=0
 
 ## compile:
 
