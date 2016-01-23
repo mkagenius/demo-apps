@@ -10,3 +10,6 @@ This is our new 5000 categories network from January 2016.
 
 Also this is our older 1000 categories model:
 https://www.dropbox.com/sh/qw2o1nwin5f1r1n/AADYWtqc18G035ZhuOwr4u5Ea?dl=0
+
+See a video of what it can do here:
+https://youtu.be/qVwLnYrzScc
