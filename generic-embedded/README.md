@@ -49,6 +49,10 @@ OpenBLAS will be installed in /opt/OpenBLAS/lib. Install thnets:
 	sudo make install
 
 Please download files: `model.net`, `categories.txt` and `stat.t7` from https://www.dropbox.com/sh/qw2o1nwin5f1r1n/AADYWtqc18G035ZhuOwr4u5Ea?dl=0
+This is our older 1000 categories model.
+
+Another new 5000 categories network from January 2016 is also available here:
+https://www.dropbox.com/sh/u3bunkfm0dzjix6/AABQ4Nq4-70MU57MxXyyjrrMa?dl=0
 
 ## compile:
 
