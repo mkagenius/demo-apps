@@ -2,6 +2,8 @@
 
 Teradeep neural network for large-scale object recognition
 
+Try it for embedded ARM systems, Intel/AMD PCs, nVidia TX1/TK1 etc.
+
 
 ## model files for neural network detector:
 
