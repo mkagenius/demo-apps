@@ -1,9 +1,7 @@
 UNAME_P := $(shell uname -p)
 
-OPENBLASPATH=/usr/local/lib
-
 CFLAGS = -O3 -Wall -c -fopenmp -fPIC -I../thnets -I/usr/include/freetype2
-LIBS = -L$(OPENBLASPATH) -lopenblas -lm -lpthread -lX11 -lfreetype -lswscale
+LIBS = -lm -lpthread -lX11 -lfreetype -lswscale
 CC = gcc
 
 ifneq ($(filter aarc% arm%,$(UNAME_P)),)

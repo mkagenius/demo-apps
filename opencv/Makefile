@@ -1,9 +1,7 @@
 UNAME_P := $(shell uname -p)
 
-OPENBLASPATH=/usr/local/lib
-
 CFLAGS = -O3 -Wall -c -fopenmp -fPIC -I../thnets -I/usr/include/freetype2
-LIBS = -L$(OPENBLASPATH) -lopenblas -lm -lpthread -lfreetype -lopencv_highgui -lopencv_core -lopencv_imgproc
+LIBS = -lm -lpthread -lfreetype -lopencv_highgui -lopencv_core -lopencv_imgproc
 CXX = g++
 CC = gcc
 
