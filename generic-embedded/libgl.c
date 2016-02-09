@@ -139,6 +139,7 @@ static int StartGL()
 	XVisualInfo *vi = glXChooseVisual(dpy, DefaultScreen(dpy), attributeList);
 	ctx = glXCreateContext(dpy, vi, 0, GL_TRUE);
 	glXMakeCurrent (dpy, win, ctx);
+	lprintf("OpenGL %s initialized\n", glGetString(GL_VERSION));
 #else
 	const EGLint confAttr[] = {
 		EGL_RENDERABLE_TYPE, EGL_OPENGL_ES2_BIT,
@@ -194,7 +195,7 @@ static int StartGL()
 		eprintf("eglMakeCurrent failed: 0x%x\n", eglGetError());
 		return -1;
 	}
-	lprintf("InitEGL succeeded\n");
+	lprintf("%s initialized\n", glGetString(GL_VERSION));
 #endif
 	glClearColor (0, 0, 0, 1);
 	glClear (GL_COLOR_BUFFER_BIT);
@@ -323,13 +324,13 @@ static int CreateShaders(int fmt)
 		"precision mediump float;\n"
 		"varying vec2 vTextureCoord;\n"
 		"uniform sampler2D sTexture;\n"
-		"uniform int texturewidth;\n"
+		"uniform float texturewidth;\n"
 		"void main()\n"
 		"{\n"
 		"    vec4 c = texture2D(sTexture, vTextureCoord);\n"
 		"    c = c + vec4(-0.0625, -0.5, -0.0625, -0.5);\n"
-		"    int x = vTextureCoord.x * texturewidth;\n"
-		"    if(x & 1)\n"
+		"    float x = floor(vTextureCoord.x * texturewidth);\n"
+		"    if(floor(x * 0.5) * 2.0 != floor(x))\n"
 		"        gl_FragColor = vec4(1.164 * c.b + 1.326*c.a, 1.164 * c.b - 0.459*c.g - 0.674*c.a, 1.164 * c.b + 2.364*c.g, 1.0);\n" 
 		"    else gl_FragColor = vec4(1.164 * c.r + 1.326*c.a, 1.164 * c.r - 0.459*c.g - 0.674*c.a, 1.164 * c.r + 2.364*c.g, 1.0);\n"
 		"}\n";
@@ -453,7 +454,7 @@ int Draw(int fmt, int dx, int dy, int dw, int dh)
 		glUniform1i(samplerLoc[1], 1);
 		glUniform1i(samplerLoc[2], 2);
 	} else if(fmt == FMT_YUYV)
-		glUniform1i(texturewidthLoc, winw);
+		glUniform1f(texturewidthLoc, winw);
 	if(checkGlError("glUniform1i"))
 		return -1;
 	memcpy(vVertices, def_vVertices, sizeof(vVertices));
