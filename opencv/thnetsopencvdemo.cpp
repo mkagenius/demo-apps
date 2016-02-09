@@ -467,7 +467,7 @@ void run_simple(VideoCapture &cap)
 
 int main(int argc, char **argv)
 {
-	int alg = 1, i, motion = 0;
+	int alg = 2, i, motion = 0;
 	char camera[6] = "cam0";
 	const char *modelsdir = 0, *inputfile = camera;
 
@@ -519,14 +519,14 @@ int main(int argc, char **argv)
 	if(!modelsdir || !inputfile)
 	{
 		fprintf(stderr, "Syntax: thnetsdemo -m <models directory> [-i <input file (default cam0)>]\n");
-		fprintf(stderr, "                   [-a <alg=0:norm,1:MM,default,2:cuDNN,3:cudNNhalf>]\n");
+		fprintf(stderr, "                   [-a <alg=0:norm,1:MM,2:virtMM (default),3:cuDNN,4:cudNNhalf>]\n");
 		fprintf(stderr, "                   [-r <QVGA,VGA (default),HD,FHD] [-f(ullscreen)]\n");
 		fprintf(stderr, "                   [-M(otion mode)\n");
 		return -1;
 	}
-	if(alg == 3)
+	if(alg == 4)
 	{
-		alg = 2;
+		alg = 3;
 		THCudaHalfFloat(1);
 	}
 	THInit();
@@ -537,7 +537,9 @@ int main(int argc, char **argv)
 		THMakeSpatial(net);
 		if(alg == 0)
 			THUseSpatialConvolutionMM(net, 0);
-		else if(alg == 2)
+		else if(alg == 1 || alg == 2)
+			THUseSpatialConvolutionMM(net, alg);
+		else if(alg == 3)
 		{
 			THNETWORK *net2 = THCreateCudaNetwork(net);
 			if(!net2)
