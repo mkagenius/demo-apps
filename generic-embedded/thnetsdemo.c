@@ -557,9 +557,9 @@ void run_simple()
 		text(10, 10, s, 16, 0xff0000);
 		for(i = 0; i < 5; i++)
 		{
-			text(10, 40 + i * 20, res[i].cat, 16, 0x00a000);
+			text(10, 40 + i * 20, res[i].cat, 16, 0x0000a0);
 			sprintf(s, "(%.0f %%)", res[i].p * 100);
-			text(100, 40 + i * 20, s, 16, 0x00a000);
+			text(100, 40 + i * 20, s, 16, 0x0000a0);
 		}
 	}
 }

@@ -452,12 +452,12 @@ void run_simple(VideoCapture &cap)
 		}
 		qsort(res, ncat, sizeof(*res), catpcmp);
 		sprintf(s, "%.2f fps", fps);
-		text(&cropped, 10, 10, s, 16, 0xff0000);
+		text(&cropped, 10, 10, s, 16, 0x0000ff);
 		for(i = 0; i < 5; i++)
 		{
-			text(&cropped, 10, 40 + i * 20, res[i].cat, 16, 0x00a000);
+			text(&cropped, 10, 40 + i * 20, res[i].cat, 16, 0xa00000);
 			sprintf(s, "(%.0f %%)", res[i].p * 100);
-			text(&cropped, 100, 40 + i * 20, s, 16, 0x00a000);
+			text(&cropped, 100, 40 + i * 20, s, 16, 0xa00000);
 		}
 		imshow(winname, cropped);
 		waitKey(1);
