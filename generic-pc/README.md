@@ -15,7 +15,7 @@ It has been tested on OS X 10.10.3 and Linux. It can run at > 17 fps on a MacBoo
 # Install for Mac OSX:
 
 ## Have a wired connection or a nice WIFI connection before starting.
-
+* Clone this repository.
 * Install Torch7: Visit http://torch.ch/ (click on `get started`), btw, steps copied from this site below:
   ```
   git clone https://github.com/torch/distro.git ~/torch --recursive
@@ -26,7 +26,8 @@ It has been tested on OS X 10.10.3 and Linux. It can run at > 17 fps on a MacBoo
 
 * Please download files: `model.net`, `categories.txt` and `stat.t7` from:
 * `https://www.dropbox.com/sh/u3bunkfm0dzjix6/AABQ4Nq4-70MU57MxXyyjrrMa?dl=0` (This is our new 5000 categories network from January 2016.)
-* Place them in folder in `generic-pc` folder, all three of them.
+* Place them in folder in `generic-pc` folder, all three of them. 
+* Move to `generic-pc` folder.
 * ~~Linux camera install: `cd lib/` then `make; make install`. Note that `Makefile` wants Torch7 installed in `/usr/local/bin`, otherwise please change accordingly!~~ (not required for OSX)
  
 ## Install `opencv` if not there
@@ -41,7 +42,7 @@ It has been tested on OS X 10.10.3 and Linux. It can run at > 17 fps on a MacBoo
 
 
 ## Run:
-* To run with a webcam and display on local machine: ```qlua run.lua```
+* To run with a webcam and display on local machine: ```qlua run.lua``` (run.lua is in generic-pc folder)
 
 * Zoom window by 2 (or any number): ```qlua run.lua -z 2```
 
