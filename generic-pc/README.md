@@ -24,13 +24,13 @@ It has been tested on OS X 10.10.3 and Linux. It can run at > 17 fps on a MacBoo
   source ~/.bash_profile (generally this, or whatever is the bash profile file)
   ```
 
- * Please download files: `model.net`, `categories.txt` and `stat.t7` from:
- * `https://www.dropbox.com/sh/u3bunkfm0dzjix6/AABQ4Nq4-70MU57MxXyyjrrMa?dl=0` (This is our new 5000 categories network from January 2016.)
- * Place them in folder in `generic-pc` folder, all three of them.
- * ~~Linux camera install: `cd lib/` then `make; make install`. Note that `Makefile` wants Torch7 installed in `/usr/local/bin`, otherwise please change accordingly!~~ (not required for OSX)
+* Please download files: `model.net`, `categories.txt` and `stat.t7` from:
+* `https://www.dropbox.com/sh/u3bunkfm0dzjix6/AABQ4Nq4-70MU57MxXyyjrrMa?dl=0` (This is our new 5000 categories network from January 2016.)
+* Place them in folder in `generic-pc` folder, all three of them.
+* ~~Linux camera install: `cd lib/` then `make; make install`. Note that `Makefile` wants Torch7 installed in `/usr/local/bin`, otherwise please change accordingly!~~ (not required for OSX)
  
 ## Install `opencv` if not there
- * `brew update; brew update; brew tap homebrew/science; brew install opencv`
+ * `brew update; brew update; brew tap homebrew/science; brew install opencv` (execute one by one if fails)
  * Follow the instruction after the `opencv` install is done, something like the following two:
  * `mkdir -p /Users/<username>/Library/Python/2.7/lib/python/site-packages`
  * `echo 'import site; site.addsitedir("/usr/local/lib/python2.7/site-packages")' >> /Users/<username>/Library/Python/2.7/lib/python/site-packages/homebrew.pth`
@@ -40,7 +40,7 @@ It has been tested on OS X 10.10.3 and Linux. It can run at > 17 fps on a MacBoo
 
 
 
-## run:
+## Run:
 * To run with a webcam and display on local machine: ```qlua run.lua```
 
 * Zoom window by 2 (or any number): ```qlua run.lua -z 2```
