@@ -12,31 +12,38 @@ This application is for tinkerers, hobbiest, researchers, evaluation purpose, no
 It has been tested on OS X 10.10.3 and Linux. It can run at > 17 fps on a MacBook Pro (Retina, 15-inch, Late 2013) on CPU only.
 
 
-## install:
-Install Torch7: http://torch.ch/
+# Install for Mac OSX:
 
-Please download files: `model.net`, `categories.txt` and `stat.t7` from: https://www.dropbox.com/sh/u3bunkfm0dzjix6/AABQ4Nq4-70MU57MxXyyjrrMa?dl=0
-This is our new 5000 categories network from January 2016.
+## Have a wired connection or a nice WIFI connection before starting.
 
-Also this is our older 1000 categories model:
-https://www.dropbox.com/sh/qw2o1nwin5f1r1n/AADYWtqc18G035ZhuOwr4u5Ea?dl=0
+* Install Torch7: Visit http://torch.ch/ (click on `get started`), btw, steps copied from this site below:
+  ```
+  git clone https://github.com/torch/distro.git ~/torch --recursive
+  cd ~/torch; bash install-deps;
+  ./install.sh
+  source ~/.bash_profile (generally this, or whatever is the bash profile file)
+  ```
 
-Linux camera install: `cd lib/` then `make; make install`. Note that `Makefile` wants Torch7 installed in `/usr/local/bin`, otherwise please change accordingly!
+ * Please download files: `model.net`, `categories.txt` and `stat.t7` from:
+ * `https://www.dropbox.com/sh/u3bunkfm0dzjix6/AABQ4Nq4-70MU57MxXyyjrrMa?dl=0` (This is our new 5000 categories network from January 2016.)
+ * Place them in folder in `generic-pc` folder, all three of them.
+ * ~~Linux camera install: `cd lib/` then `make; make install`. Note that `Makefile` wants Torch7 installed in `/usr/local/bin`, otherwise please change accordingly!~~ (not required for OSX)
+ 
+## Install `opencv` if not there
+ * `brew update; brew update; brew tap homebrew/science; brew install opencv`
+ * Follow the instruction after the `opencv` install is done, something like the following two:
+ * `mkdir -p /Users/<username>/Library/Python/2.7/lib/python/site-packages`
+ * `echo 'import site; site.addsitedir("/usr/local/lib/python2.7/site-packages")' >> /Users/<username>/Library/Python/2.7/lib/python/site-packages/homebrew.pth`
+ 
+## Install Mac Camera
+ * `luarocks install camera`
+
 
 
 ## run:
-To run with a webcam and display on local machine: ```qlua run.lua```
+* To run with a webcam and display on local machine: ```qlua run.lua```
 
-Zoom window by 2 (or any number): ```qlua run.lua -z 2```
+* Zoom window by 2 (or any number): ```qlua run.lua -z 2```
 
 
-## usage:
-
-Feel free to modify and use for all you non-commercial projects. Interested parties can license this and other Teradeep technologies by contacting us at `info@teradeep.com`
-
-## most importantly:
-
-Have fun! Life is short, we need to produce while we can!
-
-## credits:
-Aysegul Dundar, Jonghoon Jin, Alfredo Canziani, Eugenio Culurciello, Berin Martini all contributed to this work and demonstration. Thank you all!
+That's it, it should open up a small window with your webcam showing your face (maybe classifying it as `Marshall` as in my case)
